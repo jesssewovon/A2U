@@ -53,6 +53,51 @@ class PiNetwork{
         $body_obj = json_decode($body, false, 512, JSON_UNESCAPED_UNICODE);
         return $body_obj;
     }
+
+    public function submitPayment($paymentId)
+    {
+        $currentPayment = $this->getPayment($paymentId);
+        $amount = $currentPayment->amount;
+        $from_address = $currentPayment->from_address;
+        $to_address = $currentPayment->to_address;
+        
+        $url = "https://api.testnet.minepi.com";
+        $sdk = new StellarSDK($url);
+
+        $senderKeyPair = KeyPair::fromSeed($this->walletPrivateSeed);
+        $destination = $to_address;
+
+        // Load sender account data from the stellar network.
+        $sender = $sdk->requestAccount($senderKeyPair->getAccountId());
+
+        // Build the transaction to send 100 XLM native payment from sender to destination
+        $paymentOperation = (new PaymentOperationBuilder($destination,Asset::native(), $amount))->build();
+        $transaction = (new TransactionBuilder($sender))->addOperation($paymentOperation)->build();
+
+        // Sign the transaction with the sender's key pair.
+        $transaction->sign($senderKeyPair, Network::testnet());
+
+        // Submit the transaction to the stellar network.
+        $response = $sdk->submitTransaction($transaction);
+        if ($response->isSuccessful()) {
+            print(PHP_EOL."Payment sent");
+        }
+        return $response;
+    }
+
+    public function completePayment($paymentId, $txid)
+    {
+        $rep = $this->httpClient->request('POST', '/v2/payments/'.$paymentId.'/complete', [
+            'headers' => [
+                'Accept' => 'application/json',
+                'Authorization' => 'Key '.$this->api_key
+            ],
+            'query' => ['txid' => $txid],
+        ]);
+        $body = $rep->getBody();
+        $body_obj = json_decode($body, false, 512, JSON_UNESCAPED_UNICODE);
+        return $body_obj;
+    }
 }
 
 ?>
