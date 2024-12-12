@@ -34,7 +34,7 @@ class PiNetwork{
                 'Accept' => 'application/json',
                 'Authorization' => 'Key '.$this->api_key
             ],
-            $paymentData
+            'json' => $paymentData
         ]);
         $body = $rep->getBody();
         Log::info("[body] $body");
