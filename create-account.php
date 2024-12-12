@@ -22,5 +22,6 @@
     $sdk = StellarSDK::getTestNetInstance();
     //$account = $sdk->requestAccount($keyPair->getAccountId());
     $account = $sdk->requestAccount("GCXMPLIIYF264A3Q6KU4ZY2XBEPNUUHXVFC3YBVJ3FRF46R7KHAKIS6P");
+    var_dump($account);
 
 ?>
