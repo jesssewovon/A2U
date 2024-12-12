@@ -41,6 +41,20 @@ class PiNetwork{
         $body_obj = json_decode($body, false, 512, JSON_UNESCAPED_UNICODE);
         return $body_obj;
 	}
+
+    public function getPayment($paymentId)
+    {
+        $rep = $this->httpClient->request('GET', '/v2/payments/'.$paymentId, [
+            'headers' => [
+                'Accept' => 'application/json',
+                'Authorization' => 'Key '.$this->api_key
+            ],
+        ]);
+        $body = $rep->getBody();
+        Log::info("[body] $body");
+        $body_obj = json_decode($body, false, 512, JSON_UNESCAPED_UNICODE);
+        return $body_obj;
+    }
 }
 
 ?>
