@@ -32,7 +32,7 @@
         ],
     ];
     $identifier = "wcYQr8iuxsLISyvXalhS7VYocpDV";
-    $paymentData = $pi->createPayment($paymentData);
+    //$paymentData = $pi->createPayment($paymentData);
     $payment = $pi->getPayment($identifier);
     echo "success";echo nl2br("\n");
     var_dump($payment);
