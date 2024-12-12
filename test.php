@@ -10,7 +10,7 @@
     use Soneso\StellarSDK\PaymentOperationBuilder;
     use Soneso\StellarSDK\Network;
     use Soneso\StellarSDK\Asset;
-    use PiNetwork;
+    use App\PiNetwork;
 
     /////////////////////////PI NETWORK////////////////////////
     /////////////ACCOUNT A SENDER////////////////////////////////////
