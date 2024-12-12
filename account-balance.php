@@ -1,7 +1,15 @@
 <?php
 
+	require __DIR__ . '/vendor/autoload.php';
+
+    use Soneso\StellarSDK\Crypto\KeyPair;
+    use Soneso\StellarSDK\Util\FriendBot;
+    use Soneso\StellarSDK\StellarSDK;
+    use Soneso\StellarSDK\Asset;
+
 	$accountId = "GCQHNQR2VM5OPXSTWZSF7ISDLE5XZRF73LNU6EOZXFQG2IJFU4WB7VFY";
 
+	$sdk = StellarSDK::getTestNetInstance();
 	// Request the account data.
 	$account = $sdk->requestAccount($accountId);
 
