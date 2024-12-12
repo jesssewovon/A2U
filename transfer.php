@@ -9,6 +9,8 @@
     use Soneso\StellarSDK\TransactionBuilder;
     use Soneso\StellarSDK\PaymentOperationBuilder;
     use Soneso\StellarSDK\Network;
+    use Soneso\StellarSDK\Asset;
+    
     /////////////ACCOUNT A SENDER////////////////////////////////////
     //GAIMLZBSO6C5CDRJUY2RRUNW64W7BGJ5R43HMJBCOC6PN4XKHRSQF5SF
     //SCHVLLKZYOQBQZI2IGKT6VWMJ2GLSVUJZRAOWZ2JUGIKH2VAXFUIPW3E
