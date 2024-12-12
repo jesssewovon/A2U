@@ -37,7 +37,6 @@ class PiNetwork{
             'json' => $paymentData
         ]);
         $body = $rep->getBody();
-        Log::info("[body] $body");
         $body_obj = json_decode($body, false, 512, JSON_UNESCAPED_UNICODE);
         return $body_obj;
 	}
@@ -51,7 +50,6 @@ class PiNetwork{
             ],
         ]);
         $body = $rep->getBody();
-        Log::info("[body] $body");
         $body_obj = json_decode($body, false, 512, JSON_UNESCAPED_UNICODE);
         return $body_obj;
     }
