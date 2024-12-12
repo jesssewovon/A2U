@@ -30,8 +30,13 @@
 
     /// Init sdk for public net
 	//$sdk = StellarSDK::getPublicNetInstance();
-	StellarSDK::TEST_NET_HORIZON_URL = "https://api.testnet.minepi.com";
-	$sdk = StellarSDK::getTestNetInstance();
+
+    //STELLAR
+	//$sdk = StellarSDK::getTestNetInstance();
+
+	//PI NETWORK
+	$url = "https://api.testnet.minepi.com";
+	$sdk = new StellarSDK($url);
 
 	$senderKeyPair = KeyPair::fromSeed("SCHVLLKZYOQBQZI2IGKT6VWMJ2GLSVUJZRAOWZ2JUGIKH2VAXFUIPW3E");
 	$destination = "GAHL4UEJWOL4GRRQLPSAMJCGWGOVSZJS5LGSDNUPO72Z6SM37MFB4V6N";
