@@ -7,7 +7,7 @@
     use Soneso\StellarSDK\StellarSDK;
     use Soneso\StellarSDK\Asset;
 
-	$accountId = "GCQHNQR2VM5OPXSTWZSF7ISDLE5XZRF73LNU6EOZXFQG2IJFU4WB7VFY";
+	$accountId = "GAIMLZBSO6C5CDRJUY2RRUNW64W7BGJ5R43HMJBCOC6PN4XKHRSQF5SF";
 
 	$sdk = StellarSDK::getTestNetInstance();
 	// Request the account data.
