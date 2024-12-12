@@ -38,7 +38,7 @@
 	$url = "https://api.testnet.minepi.com";
 	$sdk = new StellarSDK($url);
 
-	$senderKeyPair = KeyPair::fromSeed("SCHVLLKZYOQBQZI2IGKT6VWMJ2GLSVUJZRAOWZ2JUGIKH2VAXFUIPW3E");
+	$senderKeyPair = KeyPair::fromSeed("SDORQ45BZ4626TJTQ2DDGDIWQDVK56IO6V6ZJWOEIMOG4C3RNZHF3ZUG");
 	$destination = "GAHL4UEJWOL4GRRQLPSAMJCGWGOVSZJS5LGSDNUPO72Z6SM37MFB4V6N";
 
 	// Load sender account data from the stellar network.
