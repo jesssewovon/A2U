@@ -24,10 +24,12 @@
 
     $pi = new PiNetwork($api_key, $seed);
     $paymentData = [
-        "amount" => 1,
-        "memo" => "Refund for apple pie", // this is just an example
-        "metadata" => ["productId" => "apple-pie-1"],
-        "uid" => "7b568abd-31fc-49c8-bd29-ec0cebfff52e"//Filano uid
+        "payment" => [
+            "amount" => 1,
+            "memo" => "Refund for apple pie", // this is just an example
+            "metadata" => ["productId" => "apple-pie-1"],
+            "uid" => "7b568abd-31fc-49c8-bd29-ec0cebfff52e"//Filano uid
+        ],
     ];
     $res = $pi->createPayment($paymentData);
     echo "success";echo nl2br("\n");

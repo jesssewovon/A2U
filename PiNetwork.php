@@ -21,7 +21,7 @@ class PiNetwork{
 		$this->walletPrivateSeed = $walletPrivateSeed;
 
 		$this->httpClient = new Client([
-            'base_uri' => "https://api.testnet.minepi.com",
+            'base_uri' => "https://api.minepi.com",
             'exceptions' => false,
             'verify' => false
         ]);
@@ -34,7 +34,7 @@ class PiNetwork{
                 'Accept' => 'application/json',
                 'Authorization' => 'Key '.$this->api_key
             ],
-            'form_params' => $paymentData
+            'form_params' => json_encode($paymentData)
         ]);
         $body = $rep->getBody();
         Log::info("[body] $body");
