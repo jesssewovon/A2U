@@ -76,8 +76,12 @@ class PiNetwork{
         $sender = $sdk->requestAccount($senderKeyPair->getAccountId());
 
         // Build the transaction to send 100 XLM native payment from sender to destination
+        $minTime = 180;
+        $maxTime = 180;
+        $timeBounds = new TimeBounds((new \DateTime)->setTimestamp($minTime), (new \DateTime)->setTimestamp($maxTime));
+
         $paymentOperation = (new PaymentOperationBuilder($destination,Asset::native(), $amount))->build();
-        $transaction = (new TransactionBuilder($sender))->addOperation($paymentOperation)->build();
+        $transaction = (new TransactionBuilder($sender))->setTimeBounds($timeBounds)->addOperation($paymentOperation)->build();
 
         // Sign the transaction with the sender's key pair.
         $transaction->sign($senderKeyPair, Network::testnet());
