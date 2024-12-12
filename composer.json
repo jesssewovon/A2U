@@ -1,0 +1,5 @@
+{
+    "require": {
+        "soneso/stellar-php-sdk": "^1.2"
+    }
+}
