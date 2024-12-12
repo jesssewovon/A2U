@@ -23,7 +23,7 @@ class PiNetwork{
 		$this->httpClient = new Client([
             'base_uri' => "https://api.testnet.minepi.com",
             'exceptions' => false,
-            , 'verify' => false
+            'verify' => false
         ]);
 	}
 
