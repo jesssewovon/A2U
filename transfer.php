@@ -18,7 +18,8 @@
     //SD33TNJGE4WJ6LJS4D6B33HM64EMUZ2KIUIHER2Q3O4R33ANDQXWKHXI
 
     /// Init sdk for public net
-	$sdk = StellarSDK::getPublicNetInstance();
+	//$sdk = StellarSDK::getPublicNetInstance();
+	$sdk = StellarSDK::getTestNetInstance();
 
 	$senderKeyPair = KeyPair::fromSeed("SCHVLLKZYOQBQZI2IGKT6VWMJ2GLSVUJZRAOWZ2JUGIKH2VAXFUIPW3E");
 	$destination = "GAHCOAISSHVZ4KK5L4GKWGAEZ2G6MOI2JOMQRMO5SSCDJDZBFF7YMEZS";
