@@ -140,7 +140,7 @@ class PiNetwork{
             ->build();
 
         // Sign and submit the transaction
-        $transaction->sign($senderKeyPair);
+        $transaction->sign($senderKeyPair, Network::testnet());
         $response = $sdk->submitTransaction($transaction);
 
         if (!$response->isSuccessful()) {
