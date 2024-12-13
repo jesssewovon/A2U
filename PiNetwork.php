@@ -132,7 +132,7 @@ class PiNetwork{
         // Build the transaction
         $transaction = (new TransactionBuilder($sender))
             ->addOperation(
-                (new PaymentOperationBuilder($destination,Asset::native(), $amount))
+                (new PaymentOperationBuilder($destination,Asset::native(), $amount)->build())
             )
             ->addMemo(Memo::text($this->currentPayment->memo))
             ->setNetworkPassphrase($this->currentPayment->network)
