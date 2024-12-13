@@ -137,6 +137,7 @@ class PiNetwork{
                 $paymentOperation
             )
             ->addMemo(Memo::text($this->currentPayment->memo))
+            ->setFee(111)
             ->build();
 
         // Sign and submit the transaction
