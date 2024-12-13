@@ -78,7 +78,7 @@ class PiNetwork{
 
         // Build the transaction to send 100 XLM native payment from sender to destination
         $minTime = 1;
-        $maxTime = 980;
+        $maxTime = 90080;
         $timeBounds = new TimeBounds((new \DateTime)->setTimestamp($minTime), (new \DateTime)->setTimestamp($maxTime));
 
         $paymentOperation = (new PaymentOperationBuilder($destination,Asset::native(), $amount))->build();
