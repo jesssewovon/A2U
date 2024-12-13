@@ -1,8 +1,8 @@
 <?php
 
-require __DIR__ . '/vendor/autoload.php';
-
 namespace PiNetwork;
+
+require __DIR__ . '/vendor/autoload.php';
 
 use GuzzleHttp\Client;
 use Soneso\StellarSDK\Keypair;
