@@ -118,6 +118,8 @@ class PiNetwork{
             }
         }
 
+        $destination = $this->currentPayment->to_address;
+
         $url = "https://api.testnet.minepi.com";
         $sdk = new StellarSDK($url);
 
@@ -129,10 +131,7 @@ class PiNetwork{
         // Build the transaction
         $transaction = (new TransactionBuilder($sender))
             ->addOperation(
-                (new PaymentOperationBuilder())
-                    ->setDestination($this->currentPayment->to_address)
-                    ->setAsset(Asset::native())
-                    ->setAmount((string) $this->currentPayment->amount)
+                (new PaymentOperationBuilder($destination,Asset::native(), $amount))
             )
             ->addMemo(Memo::text($this->currentPayment->memo))
             ->setNetworkPassphrase($this->currentPayment->network)
