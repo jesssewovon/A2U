@@ -129,7 +129,7 @@ class PiNetwork{
         // Build the transaction
         $transaction = (new TransactionBuilder($sender))
             ->addOperation(
-                (new PaymentOperation())
+                (new PaymentOperationBuilder())
                     ->setDestination($this->currentPayment->to_address)
                     ->setAsset(Asset::native())
                     ->setAmount((string) $this->currentPayment->amount)
