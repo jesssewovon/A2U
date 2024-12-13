@@ -82,7 +82,9 @@ class PiNetwork{
         $timeBounds = new TimeBounds((new \DateTime)->setTimestamp($minTime), (new \DateTime)->setTimestamp($maxTime));
 
         $paymentOperation = (new PaymentOperationBuilder($destination,Asset::native(), $amount))->build();
-        $transaction = (new TransactionBuilder($sender))->setTimeBounds($timeBounds)->addOperation($paymentOperation)->build();
+        $transaction = (new TransactionBuilder($sender))
+        //->setTimeBounds($timeBounds)
+        ->addOperation($paymentOperation)->build();
 
         // Sign the transaction with the sender's key pair.
         $transaction->sign($senderKeyPair, Network::testnet());
