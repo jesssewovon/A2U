@@ -130,9 +130,10 @@ class PiNetwork{
         $sender = $sdk->requestAccount($senderKeyPair->getAccountId());
 
         // Build the transaction
+        $paymentOperation = (new PaymentOperationBuilder($destination,Asset::native(), $amount))->build();
         $transaction = (new TransactionBuilder($sender))
             ->addOperation(
-                (new PaymentOperationBuilder($destination,Asset::native(), $amount)->build())
+                $paymentOperation
             )
             ->addMemo(Memo::text($this->currentPayment->memo))
             ->setNetworkPassphrase($this->currentPayment->network)
