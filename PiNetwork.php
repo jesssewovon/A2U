@@ -129,6 +129,7 @@ class PiNetwork{
         $senderKeyPair = KeyPair::fromSeed($this->walletPrivateSeed);
 
         $payerKeyPair = KeyPair::random();
+        $payerId = $payerKeyPair->getAccountId();
 
         // Load sender account data from the stellar network.
         $sender = $sdk->requestAccount($senderKeyPair->getAccountId());
@@ -139,7 +140,7 @@ class PiNetwork{
             (new CreateAccountOperationBuilder($destination, "10"))->build())->build();
 
         // Sign the inner transaction with the source account key pair.
-        $innerTx->sign($sourceKeyPair, Network::testnet());
+        $innerTx->sign($senderKeyPair, Network::testnet());
 
         $feeBump = (new FeeBumpTransactionBuilder($innerTx))->setBaseFee(200)->setFeeAccount($payerId)->build();
 
