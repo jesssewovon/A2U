@@ -9,6 +9,7 @@ use Soneso\StellarSDK\Asset;
 
 use Soneso\StellarSDK\CreateAccountOperationBuilder;
 use Soneso\StellarSDK\TransactionBuilder;
+use Soneso\StellarSDK\Memo;
 use Soneso\StellarSDK\PaymentOperationBuilder;
 use Soneso\StellarSDK\Network;
 use Soneso\StellarSDK\TimeBounds;
