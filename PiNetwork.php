@@ -76,7 +76,7 @@ class PiNetwork{
         $sender = $sdk->requestAccount($senderKeyPair->getAccountId());
 
         // Build the transaction to send 100 XLM native payment from sender to destination
-        $minTime = 180;
+        $minTime = 100;
         $maxTime = 180;
         $timeBounds = new TimeBounds((new \DateTime)->setTimestamp($minTime), (new \DateTime)->setTimestamp($maxTime));
 

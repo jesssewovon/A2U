@@ -34,9 +34,17 @@
     $identifier = "wcYQr8iuxsLISyvXalhS7VYocpDV";
     //$paymentData = $pi->createPayment($paymentData);
     $payment = $pi->getPayment($identifier);
-    $submitResponse = $pi->submitPayment($identifier);
     echo "success";echo nl2br("\n");
     var_dump($payment);echo nl2br("\n");echo nl2br("\n");
-    var_dump($submitResponse);
+
+    try {
+        $submitResponse = $pi->submitPayment($identifier);
+        var_dump($submitResponse);
+    } catch (\Exception $e) {
+        echo "errrr : ".$e->getMessage();
+    }
+    
+    
+    
 
 ?>
