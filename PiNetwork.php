@@ -90,6 +90,11 @@ class PiNetwork{
         // Sign the transaction with the sender's key pair.
         $transaction->sign($senderKeyPair, Network::testnet());
 
+        $feeBump = (new FeeBumpTransactionBuilder($innerTx))->setBaseFee(200)->setFeeAccount($payerId)->build();
+
+        // Sign the fee bump transaction with the payer keypair
+        $feeBump->sign($payerKeyPair, Network::testnet());
+
         // Submit the transaction to the stellar network.
         $response = $sdk->submitTransaction($transaction);
         if ($response->isSuccessful()) {
