@@ -11,6 +11,7 @@ use Soneso\StellarSDK\CreateAccountOperationBuilder;
 use Soneso\StellarSDK\TransactionBuilder;
 use Soneso\StellarSDK\Memo;
 use Soneso\StellarSDK\PaymentOperationBuilder;
+use Soneso\StellarSDK\FeeBumpTransactionBuilder;
 use Soneso\StellarSDK\Network;
 use Soneso\StellarSDK\TimeBounds;
 
@@ -127,22 +128,24 @@ class PiNetwork{
 
         $senderKeyPair = KeyPair::fromSeed($this->walletPrivateSeed);
 
+        $payerKeyPair = KeyPair::random();
+
         // Load sender account data from the stellar network.
         $sender = $sdk->requestAccount($senderKeyPair->getAccountId());
-
-        // Build the transaction
-        $paymentOperation = (new PaymentOperationBuilder($destination,Asset::native(), $amount))->build();
-        $transaction = (new TransactionBuilder($sender))
-            ->addOperation(
-                $paymentOperation
-            )
-            ->addMemo(Memo::text($this->currentPayment->memo))
-            ->setBaseFee(111)
-            ->build();
-
         // Sign and submit the transaction
-        $transaction->sign($senderKeyPair, Network::testnet());
-        $response = $sdk->submitTransaction($transaction);
+        //$transaction->sign($senderKeyPair, Network::testnet());
+
+        $innerTx = (new TransactionBuilder($sender))->addOperation(
+            (new CreateAccountOperationBuilder($destination, "10"))->build())->build();
+
+        // Sign the inner transaction with the source account key pair.
+        $innerTx->sign($sourceKeyPair, Network::testnet());
+
+        $feeBump = (new FeeBumpTransactionBuilder($innerTx))->setBaseFee(200)->setFeeAccount($payerId)->build();
+
+        // Sign the fee bump transaction with the payer keypair
+        $feeBump->sign($payerKeyPair, Network::testnet());
+        $response = $sdk->submitTransaction($feeBump);
 
         if (!$response->isSuccessful()) {
             throw new \Exception('Transaction submission failed: ' . json_encode($response->getExtras()));
