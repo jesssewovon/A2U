@@ -85,7 +85,7 @@ class PiNetwork{
         $transaction = (new TransactionBuilder($sender))
         //->setTimeBounds($timeBounds)
         //->setMaxOperationFee(101)
-        ->setBaseFee(1)
+        ->addResourceFee(1);
         ->addOperation($paymentOperation)->build();
 
         // Sign the transaction with the sender's key pair.
