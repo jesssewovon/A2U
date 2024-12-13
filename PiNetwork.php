@@ -137,7 +137,6 @@ class PiNetwork{
                 $paymentOperation
             )
             ->addMemo(Memo::text($this->currentPayment->memo))
-            ->setNetworkPassphrase($this->currentPayment->network)
             ->setTimeout(180)
             ->build();
 
