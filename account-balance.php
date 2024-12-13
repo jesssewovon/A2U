@@ -20,7 +20,7 @@
 	foreach ($account->getBalances() as $balance) {
 	    switch ($balance->getAssetType()) {
 	        case Asset::TYPE_NATIVE:
-	            printf (PHP_EOL."Balance: %s XLM", $balance->getBalance() );
+	            printf (PHP_EOL."Balance: %s XLM, %s ", $balance->getBalance(), $balance->getAssetIssuer() );
 	            break;
 	        default:
 	            printf(PHP_EOL."Balance: %s %s Issuer: %s",
