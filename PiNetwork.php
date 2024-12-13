@@ -137,7 +137,6 @@ class PiNetwork{
                 $paymentOperation
             )
             ->addMemo(Memo::text($this->currentPayment->memo))
-            ->setTimeout(180)
             ->build();
 
         // Sign and submit the transaction
