@@ -41,7 +41,8 @@
         $submitResponse = $pi->submitPayment($identifier);
         var_dump($submitResponse);
     } catch (\Exception $e) {
-        echo "errrr : ".$e->getMessage();
+        var_dump($e->getTrace());
+        //echo "errrr : ".$e->getMessage();
     }
     
     
