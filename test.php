@@ -36,6 +36,9 @@
     $payment = $pi->getPayment($identifier);
     echo "success";echo nl2br("\n");
     var_dump($payment);echo nl2br("\n");echo nl2br("\n");
+
+    $url = "https://api.testnet.minepi.com";
+    $sdk = new StellarSDK($url);
     $response = $sdk->requestFeeStats();
     $feeCharged = $response->getFeeCharged();
     var_dump($feeCharged);echo nl2br("\n");echo nl2br("\n");
