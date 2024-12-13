@@ -25,7 +25,7 @@
     $api_key = "r3sw4kk0z0e3aowvpmckqnvuvyiyeuqtfraoubyngjqqrytjdzjudlk4ad5va2ve";
     $seed = "SDORQ45BZ4626TJTQ2DDGDIWQDVK56IO6V6ZJWOEIMOG4C3RNZHF3ZUG";
 
-    $pi = new PiNetwork\PiNetwork($api_key, $seed);
+    $pi = new PiNetwork($api_key, $seed);
     $paymentData = [
         "payment" => [
             "amount" => 1,
