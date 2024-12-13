@@ -142,7 +142,7 @@ class PiNetwork{
         // Sign the inner transaction with the source account key pair.
         $innerTx->sign($senderKeyPair, Network::testnet());
 
-        $feeBump = (new FeeBumpTransactionBuilder($innerTx))->setBaseFee(200000)->setFeeAccount($payerId)->build();
+        $feeBump = (new FeeBumpTransactionBuilder($innerTx))->setBaseFee(200)->setFeeAccount($payerId)->build();
 
         // Sign the fee bump transaction with the payer keypair
         $feeBump->sign($payerKeyPair, Network::testnet());
