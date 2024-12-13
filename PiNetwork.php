@@ -20,6 +20,7 @@ class PiNetwork{
 	private $walletPrivateSeed;
 
 	private $httpClient;
+    private $currentPayment;
 
 	public function __construct($api_key, $walletPrivateSeed)
 	{
@@ -60,7 +61,7 @@ class PiNetwork{
         return $body_obj;
     }
 
-    public function submitPayment($paymentId)
+    public function submitPayment_old($paymentId)
     {
         $currentPayment = $this->getPayment($paymentId);
         $amount = $currentPayment->amount;
@@ -101,6 +102,61 @@ class PiNetwork{
             print(PHP_EOL."Payment sent");
         }
         return $response;
+    }
+
+    public function submitPayment(string $paymentId): string
+    {
+        if (!$this->currentPayment || $this->currentPayment->identifier !== $paymentId) {
+            $this->currentPayment = $this->getPayment($paymentId);
+            $txid = $this->currentPayment->transaction['txid'] ?? null;
+            if ($txid) {
+                throw new \Exception(json_encode([
+                    'message' => 'This payment already has a linked txid',
+                    'paymentId' => $paymentId,
+                    'txid' => $txid
+                ]));
+            }
+        }
+
+        $url = "https://api.testnet.minepi.com";
+        $sdk = new StellarSDK($url);
+
+        $senderKeyPair = KeyPair::fromSeed($this->walletPrivateSeed);
+
+        // Load sender account data from the stellar network.
+        $sender = $sdk->requestAccount($senderKeyPair->getAccountId());
+
+        // Build the transaction
+        $transaction = (new TransactionBuilder($sender))
+            ->addOperation(
+                (new PaymentOperation())
+                    ->setDestination($this->currentPayment->to_address)
+                    ->setAsset(Asset::native())
+                    ->setAmount((string) $this->currentPayment->amount)
+            )
+            ->addMemo(Memo::text($this->currentPayment->memo))
+            ->setNetworkPassphrase($this->currentPayment->network)
+            ->setTimeout(180)
+            ->build();
+
+        // Sign and submit the transaction
+        $transaction->sign($senderKeyPair);
+        $response = $sdk->submitTransaction($transaction);
+
+        if (!$response->isSuccessful()) {
+            throw new \Exception('Transaction submission failed: ' . json_encode($response->getExtras()));
+        }
+
+        // Update payment with transaction ID
+        $client = Utils::getHttpClient($this->apiKey, $this->axiosOptions);
+        $client->post("/v2/payments/{$paymentId}/transaction", [
+            'json' => [
+                'txid' => $response->getHash(),
+                'network' => $this->currentPayment->network
+            ]
+        ]);
+
+        return $response->getHash();
     }
 
     public function completePayment($paymentId, $txid)
