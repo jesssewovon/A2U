@@ -118,6 +118,7 @@ class PiNetwork{
             }
         }
 
+        $amount = $this->currentPayment->amount;
         $destination = $this->currentPayment->to_address;
 
         $url = "https://api.testnet.minepi.com";
