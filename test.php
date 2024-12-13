@@ -14,6 +14,8 @@
 
     //include 'PiNetwork.php';
     include 'pi.php';
+    include 'Types.php';
+    include 'Utils.php';
 
     /////////////////////////PI NETWORK////////////////////////
     /////////////ACCOUNT A SENDER////////////////////////////////////
