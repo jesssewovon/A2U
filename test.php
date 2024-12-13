@@ -40,7 +40,8 @@
     $url = "https://api.testnet.minepi.com";
     $sdk = new StellarSDK($url);
     $response = $sdk->requestFeeStats();
-    $feeCharged = $response->getFeeCharged();
+    //$feeCharged = $response->getFeeCharged();
+    $feeCharged = $response->getLastLedgerBaseFee();
     var_dump($feeCharged);echo nl2br("\n");echo nl2br("\n");
 
     try {
