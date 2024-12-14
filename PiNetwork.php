@@ -106,7 +106,7 @@ class PiNetwork{
         return $response;
     }
 
-    public function submitPayment(string $paymentId): string
+    public function submitPayment(string $paymentId)
     {
         if (!$this->currentPayment || $this->currentPayment->identifier !== $paymentId) {
             $this->currentPayment = $this->getPayment($paymentId);
