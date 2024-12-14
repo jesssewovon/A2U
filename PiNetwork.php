@@ -139,11 +139,16 @@ class PiNetwork{
         // Load sender account data from the stellar network.
         $sender = $sdk->requestAccount($senderKeyPair->getAccountId());
 
+        $minTime = 1;
+        $maxTime = 9008000;
+        $timeBounds = new TimeBounds((new \DateTime)->setTimestamp($minTime), (new \DateTime)->setTimestamp($maxTime));
+
         $paymentOperation = (new PaymentOperationBuilder($destination,Asset::native(), $amount))->build();
         $transaction = (new TransactionBuilder($sender))
             ->addOperation($paymentOperation)
             ->setMaxOperationFee($feeCharged)
             ->addMemo(Memo::text($this->currentPayment->memo))
+            ->setTimeBounds($timeBounds)
             ->build();
         // Sign and submit the transaction
         $net = new Network($this->currentPayment->network);
