@@ -139,7 +139,7 @@ class PiNetwork{
         // Load sender account data from the stellar network.
         $sender = $sdk->requestAccount($senderKeyPair->getAccountId());
 
-        $minTime = 1;
+        $minTime = 1641803321;
         $maxTime = 1741803321;
         $timeBounds = new TimeBounds((new \DateTime)->setTimestamp($minTime), (new \DateTime)->setTimestamp($maxTime));
 
@@ -169,7 +169,7 @@ class PiNetwork{
                 'Accept' => 'application/json',
                 'Authorization' => 'Key '.$this->api_key
             ],
-            'query' => ['txid' => $txid],
+            'json' => ['txid' => $txid],
         ]);
         $body = $rep->getBody();
         $body_obj = json_decode($body, false, 512, JSON_UNESCAPED_UNICODE);
