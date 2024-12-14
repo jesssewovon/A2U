@@ -137,7 +137,8 @@ class PiNetwork{
             ->setMaxOperationFee(100000)
             ->build();
         // Sign and submit the transaction
-        $transaction->sign($senderKeyPair, Network::testnet());
+        $net = new Network($this->currentPayment->network);
+        $transaction->sign($senderKeyPair, $net);
         $response = $sdk->submitTransaction($transaction);
 
         if (!$response->isSuccessful()) {
