@@ -13,9 +13,6 @@
     //use App\PiNetwork;
 
     include 'PiNetwork.php';
-    //include 'pi.php';
-    include 'Types.php';
-    include 'Utils.php';
 
     /////////////////////////PI NETWORK////////////////////////
     /////////////ACCOUNT A SENDER////////////////////////////////////
@@ -27,9 +24,9 @@
     $uid = "7b568abd-31fc-49c8-bd29-ec0cebfff52e";//Filano uid
 
     //marketplace-a52471361fb46943
-    $api_key = "awnvszy2pwdfey6jcnj7qye6yamaz5shtvqeaomsjhbazaqjadd2qeibvvaog8re";
-    $seed = "SCDEDMODCIMJ3ISYYAWW3MXQGXCZDL4MUKYKLUADHQDHSLZPK6NK43EA";
-    $uid = "ae69e3dc-ab1d-444e-81e5-89c140a8ba56";//Moi
+    //$api_key = "awnvszy2pwdfey6jcnj7qye6yamaz5shtvqeaomsjhbazaqjadd2qeibvvaog8re";
+    //$seed = "SCDEDMODCIMJ3ISYYAWW3MXQGXCZDL4MUKYKLUADHQDHSLZPK6NK43EA";
+    //$uid = "ae69e3dc-ab1d-444e-81e5-89c140a8ba56";//Moi
     //$uid = "6ec29c65-351b-4ad9-9bcf-9760187c0242";//Filano
 
     $pi = new PiNetwork($api_key, $seed);
@@ -45,6 +42,7 @@
     $paymentData = $pi->createPayment($paymentData);
     $identifier = $paymentData->identifier;
     $payment = $pi->getPayment($identifier);
+    $identifier = $payment->identifier;
     echo "success";echo nl2br("\n");
     var_dump($payment);echo nl2br("\n");echo nl2br("\n");
 
@@ -70,6 +68,5 @@
     echo "Payment completion";
     $paymentComplete = $pi->completePayment($identifier, $txid);
     var_dump($paymentComplete);
-    
 
 ?>
