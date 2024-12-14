@@ -50,12 +50,17 @@
     try {
         $submitResponse = $pi->submitPayment($identifier);
         var_dump($submitResponse);
+        //3dd38f3c66ad66a2171eea7c862ea1bd51e6edee61435e4faf8ea32a1bbb0a33
     } catch (\Exception $e) {
         var_dump($e);
         //echo "errrr : ".$e->getMessage();
     }
-    
-    
+
+    echo nl2br("\n");echo nl2br("\n");
+    echo "Payment completion";
+    /*$txid = "";
+    $paymentComplete = $pi->completePayment($identifier, $txid);
+    var_dump($paymentComplete);*/
     
 
 ?>
