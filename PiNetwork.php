@@ -110,13 +110,15 @@ class PiNetwork{
     {
         if (!$this->currentPayment || $this->currentPayment->identifier !== $paymentId) {
             $this->currentPayment = $this->getPayment($paymentId);
-            $txid = $this->currentPayment->transaction['txid'] ?? null;
+            $txid = $this->currentPayment->transaction->txid ?? null;
             if ($txid) {
-                throw new \Exception(json_encode([
+                return $txid;
+                
+                /*throw new \Exception(json_encode([
                     'message' => 'This payment already has a linked txid',
                     'paymentId' => $paymentId,
                     'txid' => $txid
-                ]));
+                ]));*/
             }
         }
 
