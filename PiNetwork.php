@@ -145,15 +145,6 @@ class PiNetwork{
             throw new \Exception('Transaction submission failed: ' . json_encode($response->getExtras()));
         }
 
-        // Update payment with transaction ID
-        $client = Utils::getHttpClient($this->apiKey, $this->axiosOptions);
-        $client->post("/v2/payments/{$paymentId}/transaction", [
-            'json' => [
-                'txid' => $response->getHash(),
-                'network' => $this->currentPayment->network
-            ]
-        ]);
-
         return $response->getHash();
     }
 
