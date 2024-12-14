@@ -145,7 +145,7 @@ class PiNetwork{
             throw new \Exception('Transaction submission failed: ' . json_encode($response->getExtras()));
         }
 
-        return $response;
+        return $response->getHash();
     }
 
     public function completePayment($paymentId, $txid)

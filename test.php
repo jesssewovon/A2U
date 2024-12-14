@@ -47,9 +47,11 @@
     $feeCharged = $response->getLastLedgerBaseFee();
     var_dump($feeCharged);echo nl2br("\n");echo nl2br("\n");
 
+    $txid = "";
     try {
         $submitResponse = $pi->submitPayment($identifier);
         var_dump($submitResponse);
+        $txid = $submitResponse;
         //3dd38f3c66ad66a2171eea7c862ea1bd51e6edee61435e4faf8ea32a1bbb0a33
     } catch (\Exception $e) {
         var_dump($e);
@@ -58,7 +60,6 @@
 
     echo nl2br("\n");echo nl2br("\n");
     echo "Payment completion";
-    $txid = "3dd38f3c66ad66a2171eea7c862ea1bd51e6edee61435e4faf8ea32a1bbb0a33";
     $paymentComplete = $pi->completePayment($identifier, $txid);
     var_dump($paymentComplete);
     
