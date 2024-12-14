@@ -140,7 +140,7 @@ class PiNetwork{
         $sender = $sdk->requestAccount($senderKeyPair->getAccountId());
 
         $minTime = 1;
-        $maxTime = 180;
+        $maxTime = 1741803321;
         $timeBounds = new TimeBounds((new \DateTime)->setTimestamp($minTime), (new \DateTime)->setTimestamp($maxTime));
 
         $paymentOperation = (new PaymentOperationBuilder($destination,Asset::native(), $amount))->build();
@@ -170,6 +170,32 @@ class PiNetwork{
                 'Authorization' => 'Key '.$this->api_key
             ],
             'query' => ['txid' => $txid],
+        ]);
+        $body = $rep->getBody();
+        $body_obj = json_decode($body, false, 512, JSON_UNESCAPED_UNICODE);
+        return $body_obj;
+    }
+
+    public function cancelPayment($paymentId)
+    {
+        $rep = $this->httpClient->request('POST', '/v2/payments/'.$paymentId.'/cancel', [
+            'headers' => [
+                'Accept' => 'application/json',
+                'Authorization' => 'Key '.$this->api_key
+            ],
+        ]);
+        $body = $rep->getBody();
+        $body_obj = json_decode($body, false, 512, JSON_UNESCAPED_UNICODE);
+        return $body_obj;
+    }
+
+    public function incompletePayments()
+    {
+        $rep = $this->httpClient->request('GET', '/v2/payments/incomplete_server_payments', [
+            'headers' => [
+                'Accept' => 'application/json',
+                'Authorization' => 'Key '.$this->api_key
+            ],
         ]);
         $body = $rep->getBody();
         $body_obj = json_decode($body, false, 512, JSON_UNESCAPED_UNICODE);
