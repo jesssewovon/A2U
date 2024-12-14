@@ -35,14 +35,15 @@
     $pi = new PiNetwork($api_key, $seed);
     $paymentData = [
         "payment" => [
-            "amount" => 1,
+            "amount" => 0.42,
             "memo" => "Refund for apple pie", // this is just an example
             "metadata" => ["productId" => "apple-pie-1"],
             "uid" => $uid
         ],
     ];
-    $identifier = "wcYQr8iuxsLISyvXalhS7VYocpDV";
-    //$paymentData = $pi->createPayment($paymentData);
+    //$identifier = "wcYQr8iuxsLISyvXalhS7VYocpDV";
+    $paymentData = $pi->createPayment($paymentData);
+    $identifier = $paymentData->identifier;
     $payment = $pi->getPayment($identifier);
     echo "success";echo nl2br("\n");
     var_dump($payment);echo nl2br("\n");echo nl2br("\n");
