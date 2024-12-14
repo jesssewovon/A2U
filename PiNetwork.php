@@ -113,7 +113,7 @@ class PiNetwork{
             $txid = $this->currentPayment->transaction->txid ?? null;
             if ($txid) {
                 return $txid;
-                
+
                 /*throw new \Exception(json_encode([
                     'message' => 'This payment already has a linked txid',
                     'paymentId' => $paymentId,
@@ -128,6 +128,12 @@ class PiNetwork{
         $url = "https://api.testnet.minepi.com";
         $sdk = new StellarSDK($url);
 
+        ///////////////////////////////////////////////////////
+        $responseFeeStats = $sdk->requestFeeStats();
+        //$feeCharged = $response->getFeeCharged();
+        $feeCharged = $responseFeeStats->getLastLedgerBaseFee();
+        ///////////////////////////////////////////////////////
+
         $senderKeyPair = KeyPair::fromSeed($this->walletPrivateSeed);
 
         // Load sender account data from the stellar network.
@@ -136,7 +142,7 @@ class PiNetwork{
         $paymentOperation = (new PaymentOperationBuilder($destination,Asset::native(), $amount))->build();
         $transaction = (new TransactionBuilder($sender))
             ->addOperation($paymentOperation)
-            ->setMaxOperationFee(100000)
+            ->setMaxOperationFee($feeCharged)
             ->build();
         // Sign and submit the transaction
         $net = new Network($this->currentPayment->network);

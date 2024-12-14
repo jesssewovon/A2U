@@ -24,6 +24,13 @@
 
     $api_key = "r3sw4kk0z0e3aowvpmckqnvuvyiyeuqtfraoubyngjqqrytjdzjudlk4ad5va2ve";
     $seed = "SDORQ45BZ4626TJTQ2DDGDIWQDVK56IO6V6ZJWOEIMOG4C3RNZHF3ZUG";
+    $uid = "7b568abd-31fc-49c8-bd29-ec0cebfff52e";//Filano uid
+
+    //marketplace-a52471361fb46943
+    $api_key = "awnvszy2pwdfey6jcnj7qye6yamaz5shtvqeaomsjhbazaqjadd2qeibvvaog8re";
+    $seed = "SCDEDMODCIMJ3ISYYAWW3MXQGXCZDL4MUKYKLUADHQDHSLZPK6NK43EA";
+    //$uid = "ae69e3dc-ab1d-444e-81e5-89c140a8ba56";//Moi
+    $uid = "6ec29c65-351b-4ad9-9bcf-9760187c0242";//Filano
 
     $pi = new PiNetwork($api_key, $seed);
     $paymentData = [
@@ -31,7 +38,7 @@
             "amount" => 1,
             "memo" => "Refund for apple pie", // this is just an example
             "metadata" => ["productId" => "apple-pie-1"],
-            "uid" => "7b568abd-31fc-49c8-bd29-ec0cebfff52e"//Filano uid
+            "uid" => $uid
         ],
     ];
     $identifier = "wcYQr8iuxsLISyvXalhS7VYocpDV";
