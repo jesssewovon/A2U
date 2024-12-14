@@ -143,6 +143,7 @@ class PiNetwork{
         $transaction = (new TransactionBuilder($sender))
             ->addOperation($paymentOperation)
             ->setMaxOperationFee($feeCharged)
+            ->addMemo(Memo::text($this->currentPayment->memo))
             ->build();
         // Sign and submit the transaction
         $net = new Network($this->currentPayment->network);
