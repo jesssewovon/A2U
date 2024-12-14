@@ -138,7 +138,7 @@ class PiNetwork{
             ->build();
         // Sign and submit the transaction
         $transaction->sign($senderKeyPair, Network::testnet());
-        $response = $sdk->submitTransaction($feeBump);
+        $response = $sdk->submitTransaction($transaction);
 
         if (!$response->isSuccessful()) {
             throw new \Exception('Transaction submission failed: ' . json_encode($response->getExtras()));
