@@ -12,7 +12,8 @@
     use Soneso\StellarSDK\Asset;
     //use App\PiNetwork;
 
-    include 'PiNetwork.php';
+    //include 'PiNetwork.php';
+    use Get2\A2uphp\PiNetwork;
 
     /////////////////////////PI NETWORK////////////////////////
     /////////////ACCOUNT A SENDER////////////////////////////////////

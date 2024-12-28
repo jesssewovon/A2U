@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a78790045d524775a9048903f0e6383c",
+    "content-hash": "c945af95cf6d895a90d0fe24618682ed",
     "packages": [
         {
             "name": "christian-riesen/base32",
@@ -64,6 +64,44 @@
                 "source": "https://github.com/ChristianRiesen/base32/tree/1.6.0"
             },
             "time": "2021-02-26T10:19:33+00:00"
+        },
+        {
+            "name": "get2/a2uphp",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jesssewovon/pi-php.git",
+                "reference": "34edb3a47e71cadb116db1a94bba6c0d15428bae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jesssewovon/pi-php/zipball/34edb3a47e71cadb116db1a94bba6c0d15428bae",
+                "reference": "34edb3a47e71cadb116db1a94bba6c0d15428bae",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.9",
+                "soneso/stellar-php-sdk": "^1.2"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Get2\\A2uphp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Djedje SEWOVON",
+                    "email": "jesssewovon@gmail.com"
+                }
+            ],
+            "description": "PHP package to make App to User payment for Pi Network",
+            "support": {
+                "source": "https://github.com/jesssewovon/pi-php/tree/main"
+            },
+            "time": "2024-12-28T13:51:57+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -1137,7 +1175,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "get2/a2uphp": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
