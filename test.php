@@ -1,18 +1,7 @@
 <?php
 
 	require __DIR__ . '/vendor/autoload.php';
-
-    use Soneso\StellarSDK\Crypto\KeyPair;
-    use Soneso\StellarSDK\Util\FriendBot;
-    use Soneso\StellarSDK\StellarSDK;
-    use Soneso\StellarSDK\CreateAccountOperationBuilder;
-    use Soneso\StellarSDK\TransactionBuilder;
-    use Soneso\StellarSDK\PaymentOperationBuilder;
-    use Soneso\StellarSDK\Network;
-    use Soneso\StellarSDK\Asset;
-    //use App\PiNetwork;
-
-    //include 'PiNetwork.php';
+    
     use Get2\A2uphp\PiNetwork;
 
     /////////////////////////PI NETWORK////////////////////////
