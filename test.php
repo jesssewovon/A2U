@@ -1,7 +1,7 @@
 <?php
 
 	require __DIR__ . '/vendor/autoload.php';
-    
+
     use Get2\A2uphp\PiNetwork;
 
     /////////////////////////PI NETWORK////////////////////////
@@ -38,8 +38,7 @@
             ],
         ];
         //$identifier = "wcYQr8iuxsLISyvXalhS7VYocpDV";
-        $paymentData = $pi->createPayment($paymentData);
-        $identifier = $paymentData->identifier;
+        $identifier = $pi->createPayment($paymentData);
     }
     $payment = $pi->getPayment($identifier);
     echo "success";echo nl2br("\n");
