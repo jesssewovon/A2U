@@ -13,6 +13,7 @@
     $seed = "SDORQ45BZ4626TJTQ2DDGDIWQDVK56IO6V6ZJWOEIMOG4C3RNZHF3ZUG";
     $uid = "7b568abd-31fc-49c8-bd29-ec0cebfff52e";//Filano uid
     $uid = "0e2a389b-8086-45a4-9ac0-c783e0fac907";//Mon uid
+    $uid = "e6231dd6-8d8b-4aab-a068-1e3d60b95c13";//Emkins uid: TOGO
 
     $pi = new PiNetwork($api_key, $seed);
     $incompletePayments = $pi->incompletePayments();
