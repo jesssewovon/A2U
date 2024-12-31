@@ -1,6 +1,7 @@
 <?php
 
-
+	require __DIR__ . '/vendor/autoload.php';
+    
     use Get2\A2uphp\PiNetwork;
 
     /////////////////////////PI NETWORK////////////////////////
