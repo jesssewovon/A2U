@@ -1,7 +1,7 @@
 <?php
 
 	require __DIR__ . '/vendor/autoload.php';
-    
+
     use Get2\A2uphp\PiNetwork;
 
     /////////////////////////PI NETWORK////////////////////////
@@ -30,12 +30,10 @@
     }
     if($cancelAllIncompletePayments){
         $paymentData = [
-            "payment" => [
                 "amount" => 0.42,
                 "memo" => "Refund for apple pie", // this is just an example
                 "metadata" => ["productId" => "apple-pie-1"],
                 "uid" => $uid
-            ],
         ];
         //$identifier = "wcYQr8iuxsLISyvXalhS7VYocpDV";
         $paymentData = $pi->createPayment($paymentData);
