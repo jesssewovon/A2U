@@ -17,7 +17,7 @@
     $uid = "dd905fac-7cef-40d6-af20-2d03a2f0407e";//Raymond uid: BENIN
     $uid = "cde5441b-52ec-4ff2-aa65-784a2153ad39";//Raymond team member uid: BENIN
     $uid = "31344320-7d5a-41cc-a28a-11604962e486";//Akoele
-    $uid = "ee088931-0d34-455f-a9e0-985f2fc30eb8";//Akoss
+    //$uid = "ee088931-0d34-455f-a9e0-985f2fc30eb8";//Akoss
 
     $pi = new PiNetwork($api_key, $seed);
     $incompletePayments = $pi->incompletePayments();
