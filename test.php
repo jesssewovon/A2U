@@ -39,6 +39,9 @@
         ];
         $identifier = $pi->createPayment($paymentData);
     }
+    if (isset($identifier['status']) && $identifier['status']===false) {
+        die($identifier['message']);
+    }
     $payment = $pi->getPayment($identifier);
     echo "success";echo nl2br("\n");
     var_dump($payment);echo nl2br("\n");echo nl2br("\n");
@@ -52,6 +55,9 @@
     } catch (\Exception $e) {
         $data = json_decode($e->getMessage());
         $txid = $data->txid;
+    }
+    if (isset($txid['status']) && $txid['status']===false) {
+        die($txid['message']);
     }
     echo nl2br("\n");echo nl2br("\n");
     echo "Payment completion";echo nl2br("\n");
