@@ -8,7 +8,7 @@
     /////////////ACCOUNT A SENDER////////////////////////////////////
     //GCXMPLIIYF264A3Q6KU4ZY2XBEPNUUHXVFC3YBVJ3FRF46R7KHAKIS6P
     //SDORQ45BZ4626TJTQ2DDGDIWQDVK56IO6V6ZJWOEIMOG4C3RNZHF3ZUG
-
+    ///////////////////////////TESTNET///////////////////////////////
     $api_key = "r3sw4kk0z0e3aowvpmckqnvuvyiyeuqtfraoubyngjqqrytjdzjudlk4ad5va2ve";
     $seed = "SDORQ45BZ4626TJTQ2DDGDIWQDVK56IO6V6ZJWOEIMOG4C3RNZHF3ZUG";
     $uid = "7b568abd-31fc-49c8-bd29-ec0cebfff52e";//Filano uid
@@ -23,6 +23,11 @@
     $uid = "54713175-332f-4f8e-a2cf-3896ec44a3b7";//Marie228tg
     $uid = "c0a83bd1-e8d4-45d9-91fe-3a77a3b8ada2";//AhmedElmaya
 
+    //////////////////////////MAINNET///////////////////////////////
+    $api_key = "8lm3orcrp3kv2wovw8yzd5opof4wagakqggafurbzplecwjniquow29spxppvvzk";
+    $seed = "SBUGIO3DVTSNZCVKXROHMNVE6VDBXLMVS4COBUYMB4IK2ZWLSR2SEFFH";
+    $uid = "7d90ccd9-fd8e-437d-ae40-309f7738cab2";//Filano uid
+
     $pi = new PiNetwork($api_key, $seed);
     $incompletePayments = $pi->incompletePayments();
     $identifier = "";
@@ -36,7 +41,7 @@
         $paymentData = [
             "payment" => [
                 "amount" => 0.42,
-                "memo" => "Refund for apple pie", // this is just an example
+                "memo" => "Refund for apple pie, A2U for Piketplace", // this is just an example
                 "metadata" => ["productId" => "apple-pie-1"],
                 "uid" => $uid
             ],
