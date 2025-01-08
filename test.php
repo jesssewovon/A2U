@@ -24,9 +24,9 @@
     $uid = "c0a83bd1-e8d4-45d9-91fe-3a77a3b8ada2";//AhmedElmaya
 
     //////////////////////////MAINNET///////////////////////////////
-    /*$api_key = "8lm3orcrp3kv2wovw8yzd5opof4wagakqggafurbzplecwjniquow29spxppvvzk";
+    $api_key = "8lm3orcrp3kv2wovw8yzd5opof4wagakqggafurbzplecwjniquow29spxppvvzk";
     $seed = "SBUGIO3DVTSNZCVKXROHMNVE6VDBXLMVS4COBUYMB4IK2ZWLSR2SEFFH";
-    $uid = "7d90ccd9-fd8e-437d-ae40-309f7738cab2";*///Filano uid
+    $uid = "7d90ccd9-fd8e-437d-ae40-309f7738cab2";//Filano uid
 
     $pi = new PiNetwork($api_key, $seed);
     $incompletePayments = $pi->incompletePayments();
