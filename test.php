@@ -27,7 +27,6 @@
     $api_key = "8lm3orcrp3kv2wovw8yzd5opof4wagakqggafurbzplecwjniquow29spxppvvzk";
     $seed = "SBUGIO3DVTSNZCVKXROHMNVE6VDBXLMVS4COBUYMB4IK2ZWLSR2SEFFH";
     $uid = "7d90ccd9-fd8e-437d-ae40-309f7738cab2";//Filano uid
-    $uid = "6e7fa069-2568-460a-abf8-5cdc296719d9";//Filano uid
 
     $pi = new PiNetwork($api_key, $seed);
     $incompletePayments = $pi->incompletePayments();
