@@ -1,0 +1,6 @@
+{
+    "require": {
+        "soneso/stellar-php-sdk": "^1.2",
+        "get2/a2uphp": "dev-main"
+    }
+}
